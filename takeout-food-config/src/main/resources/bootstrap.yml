@@ -1,0 +1,35 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8333
+  servlet:
+    context-path: /
+
+#spring
+---
+spring:
+  application:
+    name: takeout-food-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.230.153.45:8848
+      config:
+        server-addr:  111.230.153.45:8848
+        file-extension: yaml
+        group: DEV_GROUP
+        namespace: 148b1a7d-cc03-492d-9de9-3d9faac025b3
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+
+#官方文档地址  https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
+#${prefix}-${spring.profile.active}.${file-extension}
+#  prefix相当于 ：name: takeout-food-config   spring.profile.active 相当于application.yml里面的   dev
+#最后： takeout-food-config-dev.yaml
